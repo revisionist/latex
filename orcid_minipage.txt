@@ -1,0 +1,10 @@
+\begin{minipage}[t]{0.5\textwidth}
+\begin{flushleft} \large
+\emph{Author:}\\
+\authorforename\ \textsc{\authorsurname}\\
+\begin{small} \href{https://orcid.org/0000-0002-5565-9692}
+{\textcolor{orcidlogocol}{\aiOrcid} orcid.org/0000-0002-5565-9692}
+\end{small}
+
+\end{flushleft}
+\end{minipage}

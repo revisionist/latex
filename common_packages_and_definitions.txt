@@ -1,0 +1,87 @@
+
+\usepackage{bbding}
+% https://ctan.org/tex-archive/fonts/bbding
+
+\usepackage{academicons}
+% https://ctan.org/tex-archive/fonts/academicons
+
+%\usepackage[svgnames]{xcolor}
+% https://ctan.org/tex-archive/macros/latex/contrib/xcolor
+
+%\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+%\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
+% https://ctan.org/tex-archive/macros/latex/contrib/hyperref/
+
+\usepackage{bbding}
+% https://ctan.org/tex-archive/fonts/bbding
+
+\usepackage{xspace}
+% https://ctan.org/tex-archive/macros/latex/required/tools
+
+\usepackage{expl3}	% Needed for peek_catcode
+
+\usepackage{lipsum}
+% https://ctan.org/tex-archive/macros/latex/contrib/lipsum
+% http://mirror.easyname.at/ctan/macros/latex/contrib/lipsum/lipsum.pdf
+
+
+% Handle latin abbreviations.  Slightly modified from:
+% https://stackoverflow.com/questions/3282319/correct-way-to-define-macros-etc-ie-in-latex/3285603#3285603
+\ExplSyntaxOn % Uses expl3
+\newcommand\latinabbrev[1]{
+  \peek_meaning:NTF . {% Same as \@ifnextchar
+    #1\@}%
+  { \peek_catcode:NTF a {% Check whether next char has same catcode as \'a, i.e., is a letter
+      #1.\@\xspace}%
+    {#1.\@}}}
+\ExplSyntaxOff
+
+\def\eg{\latinabbrev{\textit{e}.\textit{g}}}
+\def\etal{\latinabbrev{\textit{et al}}}
+\def\etc{\latinabbrev{\textit{etc}}}
+\def\ie{\latinabbrev{\textit{i}.\textit{e}}}
+\def\vs{\latinabbrev{\textit{vs}}}
+
+% Alternatives without italics:
+%\def\eg{\latinabbrev{eg}}
+%\def\etal{\latinabbrev{et al}}
+%\def\etc{\latinabbrev{etc}}
+%\def\ie{\latinabbrev{ie}}
+%\def\vs{\latinabbrev{vs}}
+
+
+% https://tex.stackexchange.com/questions/823/remove-ugly-borders-around-clickable-cross-references-and-hyperlinks
+\hypersetup{
+    colorlinks,
+    linkcolor={red!40!black},
+    citecolor={blue!40!black},
+    urlcolor={blue!50!black}
+}
+
+
+% Insert a TODO marker, either with a colon after it if text follows
+% or without one if a period follows:
+%  \todo Some text        -> TODO: Some text
+%  Preceding text \todo.  -> Preceding text TODO.
+\ExplSyntaxOn % Uses expl3
+\newcommand\todocmd[1]{
+  \peek_catcode:NTF . {#1} {#1:\xspace}
+}
+\ExplSyntaxOff
+\def\todo{\todocmd{\textbf{TODO}}}
+
+% Insert a QUESTION marker, either with a colon after it if text follows
+% or without one if a period follows:
+%  \qstn Some text        -> !QUESTION: Some text
+%  Preceding text \qstn.  -> Preceding text !QUESTION.
+\ExplSyntaxOn % Uses expl3
+\newcommand\qstncmd[1]{
+  \peek_catcode:NTF . {#1} {#1:\xspace}
+}
+\ExplSyntaxOff
+\def\qstn{\qstncmd{\textbf{!QUESTION}}}
+
+
+\definecolor{orcidlogocol}{HTML}{A6CE39}
+\definecolor{headergrey}{HTML}{999999}
