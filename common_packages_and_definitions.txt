@@ -99,3 +99,12 @@
 
 \definecolor{orcidlogocol}{HTML}{A6CE39}
 \definecolor{headergrey}{HTML}{999999}
+
+% https://tex.stackexchange.com/questions/4021/how-to-set-a-marker-counter-label-to-an-arbitrary-piece-of-text
+\newcounter{unlabelledcounter}
+\newcommand*{\misclabel}[1]{\refstepcounter{unlabelledcounter}\theunlabelledcounter\label{#1}}
+\newcommand*{\miscref}[1]{\ref{#1}}
+\newcounter{chartcounter}
+\newcommand*{\chartlabel}[1]{C\refstepcounter{chartcounter}\thechartcounter\label{#1}}
+\newcommand*{\chartref}[1]{C\ref{#1}}
+
