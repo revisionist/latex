@@ -108,3 +108,5 @@
 \newcommand*{\chartlabel}[1]{C\refstepcounter{chartcounter}\thechartcounter\label{#1}}
 \newcommand*{\chartref}[1]{C\ref{#1}}
 
+% https://tex.stackexchange.com/questions/279/how-do-i-ensure-that-figures-appear-in-the-section-theyre-associated-with
+\usepackage[section]{placeins}
