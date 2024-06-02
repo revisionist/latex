@@ -1,0 +1,193 @@
+
+% Load additional style files
+\input{blocked.sty}
+\input{uhead.sty}
+\input{boxit.sty}
+\input{thesis.sty}
+
+% Set the date for the document
+\date{\today}
+
+% Define some commonly used commands for a thesis
+\newcommand{\ipc}{{\sf ipc}}
+
+% Define mathematical symbols
+\newcommand{\Prob}{\bbbp}
+\newcommand{\Real}{\bbbr}
+\newcommand{\real}{\Real}
+\newcommand{\Int}{\bbbz}
+\newcommand{\Nat}{\bbbn}
+
+% More mathematical symbols for various number sets
+\newcommand{\NN}{{\sf I\kern-0.14emN}}	% Natural numbers
+\newcommand{\ZZ}{{\sf Z\kern-0.45emZ}}	% Integers
+\newcommand{\QQQ}{{\sf C\kern-0.48emQ}}	% Rational numbers
+\newcommand{\RR}{{\sf I\kern-0.14emR}}	% Real numbers
+
+% Define commands for mathematical notation and variables
+\newcommand{\KK}{{\cal K}}
+\newcommand{\OO}{{\cal O}}
+\newcommand{\AAA}{{\bf A}}
+\newcommand{\HH}{{\bf H}}
+\newcommand{\II}{{\bf I}}
+\newcommand{\LL}{{\bf L}}
+\newcommand{\PP}{{\bf P}}
+\newcommand{\PPprime}{{\bf P'}}
+\newcommand{\QQ}{{\bf Q}}
+\newcommand{\UU}{{\bf U}}
+\newcommand{\UUprime}{{\bf U'}}
+\newcommand{\zzero}{{\bf 0}}
+\newcommand{\ppi}{\mbox{\boldmath $\pi$}}
+\newcommand{\aalph}{\mbox{\boldmath $\alpha$}}
+\newcommand{\bb}{{\bf b}}
+\newcommand{\ee}{{\bf e}}
+\newcommand{\mmu}{\mbox{\boldmath $\mu$}}
+\newcommand{\vv}{{\bf v}}
+\newcommand{\xx}{{\bf x}}
+\newcommand{\yy}{{\bf y}}
+\newcommand{\zz}{{\bf z}}
+\newcommand{\oomeg}{\mbox{\boldmath $\omega$}}
+\newcommand{\res}{{\bf res}}
+\newcommand{\cchi}{{\mbox{\raisebox{.4ex}{$\chi$}}}}
+%\newcommand{\cchi}{{\cal X}}
+%\newcommand{\cchi}{\mbox{\Large $\chi$}}
+
+% Logical operators and symbols
+\newcommand{\imply}{\Rightarrow}
+\newcommand{\bimply}{\Leftrightarrow}
+\newcommand{\union}{\cup}
+\newcommand{\intersect}{\cap}
+\newcommand{\boolor}{\vee}
+\newcommand{\booland}{\wedge}
+\newcommand{\boolimply}{\imply}
+\newcommand{\boolbimply}{\bimply}
+\newcommand{\boolnot}{\neg}
+\newcommand{\boolsat}{\!\models}
+\newcommand{\boolnsat}{\!\not\models}
+
+% Operator and set notation
+\newcommand{\op}[1]{\mathrm{#1}}
+\newcommand{\s}[1]{\ensuremath{\mathcal #1}}
+
+% Properly styled differentiation and integration operators
+\newcommand{\diff}[1]{\mathrm{\frac{d}{d\mathit{#1}}}}
+\newcommand{\diffII}[1]{\mathrm{\frac{d^2}{d\mathit{#1}^2}}}
+\newcommand{\intg}[4]{\int_{#3}^{#4} #1 \, \mathrm{d}#2}
+\newcommand{\intgd}[4]{\int\!\!\!\!\int_{#4} #1 \, \mathrm{d}#2 \, \mathrm{d}#3}
+
+% Large () brackets on different lines of an eqnarray environment
+\newcommand{\Leftbrace}[1]{\left(\raisebox{0mm}[#1][#1]{}\right.}
+\newcommand{\Rightbrace}[1]{\left.\raisebox{0mm}[#1][#1]{}\right)}
+
+% Funky symobols for footnotes
+\newcommand{\symbolfootnote}{\renewcommand{\thefootnote}{\fnsymbol{footnote}}}
+% now add \symbolfootnote to the beginning of the document...
+
+% Line spacing commands
+\newcommand{\normallinespacing}{\renewcommand{\baselinestretch}{1.5} \normalsize}
+\newcommand{\mediumlinespacing}{\renewcommand{\baselinestretch}{1.2} \normalsize}
+\newcommand{\narrowlinespacing}{\renewcommand{\baselinestretch}{1.0} \normalsize}
+
+
+% Miscellaneous formatting commands
+\newcommand{\bump}{\noalign{\vspace*{\doublerulesep}}}
+\newcommand{\cell}{\multicolumn{1}{}{}}
+\newcommand{\spann}{\mbox{span}}
+\newcommand{\diagg}{\mbox{diag}}
+\newcommand{\modd}{\mbox{mod}}
+\newcommand{\minn}{\mbox{min}}
+\newcommand{\andd}{\mbox{and}}
+\newcommand{\forr}{\mbox{for}}
+\newcommand{\EE}{\mbox{E}}
+
+% Definition and synchronisation commands
+\newcommand{\deff}{\stackrel{\mathrm{def}}{=}}
+\newcommand{\syncc}{~\stackrel{\textstyle \rhd\kern-0.57em\lhd}{\scriptstyle L}~}
+\def\coop{\mbox{\large $\rhd\!\!\!\lhd$}}
+\newcommand{\sync}[1]{\raisebox{-1.0ex}{$\;\stackrel{\coop}{\scriptscriptstyle #1}\,$}}
+
+% Theorem and definition environments
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
+%\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+
+% References to figures
+\newcommand{\Figref}[1]{Figure~\ref{#1}}
+\newcommand{\fig}[3]{
+	\begin{figure}[!ht]
+		\begin{center}
+			\scalebox{#3}{\includegraphics{figs/#1.ps}}
+			\vspace{-0.1in}
+			\caption[ ]{\label{#1} #2}
+		\end{center}
+	\end{figure}
+}
+
+% Two figures side by side
+\newcommand{\figtwo}[8]{
+	\begin{figure}
+		\parbox[b]{#4 \textwidth}{
+			\begin{center}
+				\scalebox{#3}{\includegraphics{figs/#1.ps}}
+				\vspace{-0.1in}
+				\caption{\label{#1}#2}
+			\end{center}
+		}
+		\hfill
+		\parbox[b]{#8 \textwidth}{
+			\begin{center}
+				\scalebox{#7}{\includegraphics{figs/#5.ps}}
+				\vspace{-0.1in}
+				\caption{\label{#5}#6}
+			\end{center}
+		}
+	\end{figure}
+}
+
+% Correct bad hyphenation
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+% Invisible section to add to TOC without showing in document
+\newcommand\invisiblesection[1]{%
+	\refstepcounter{section}%
+	\addcontentsline{toc}{section}{\protect\numberline{\thesection}#1}%
+	\sectionmark{#1}}
+
+% Handle latin abbreviations.  Slightly modified from:
+% https://stackoverflow.com/questions/3282319/correct-way-to-define-macros-etc-ie-in-latex/3285603#3285603
+\ExplSyntaxOn % Uses expl3
+\newcommand\latinabbrev[1]{
+	\peek_meaning:NTF . {% Same as \@ifnextchar
+		#1\@}%
+	{ \peek_catcode:NTF a {% Check whether next char has same catcode as \'a, i.e., is a letter
+			#1.\@\xspace}%
+		{#1.\@}}}
+\ExplSyntaxOff
+
+% Define latin abbreviations
+\def\eg{\latinabbrev{\textit{e}.\textit{g}}}
+\def\etal{\latinabbrev{\textit{et al}}}
+\def\etc{\latinabbrev{\textit{etc}}}
+\def\ie{\latinabbrev{\textit{i}.\textit{e}}}
+\def\vs{\latinabbrev{\textit{vs}}}
+
+% Insert a TODO marker, either with a colon after it if text follows
+% or without one if a period follows:
+%  \todo Some text			-> TODO: Some text
+%  Preceding text \todo.	-> Preceding text TODO.
+\ExplSyntaxOn % Uses expl3
+\newcommand\todocmd[1]{
+	\peek_catcode:NTF . {#1} {#1:\xspace}
+}
+\ExplSyntaxOff
+\def\todo{\todocmd{\textbf{TODO}}}
+
+% Define attribution commands
+\newcommand{\attributionfootnote}[1]{\footnotemark\footnotetext{Attribution: #1}}
+\newcommand{\attributioncaption}[1]{\\ \footnotesize{Attribution: #1}}
+
+% Default attribution command (set to footnote or caption as needed)
+\newcommand{\attribution}{\attributionfootnote} % or \attributioncaption
+

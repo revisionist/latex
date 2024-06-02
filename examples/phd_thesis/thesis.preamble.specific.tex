@@ -1,0 +1,46 @@
+
+% This file contains definitions that are specific to this instance of a thesis.
+
+% Define the thesis title(s)
+\def\titlemain{Interstellar Diplomacy and Cultural Integration: Strategies for Peaceful Coexistence in a Post-Scarcity Society}
+\def\titlesub{}
+%\title{\titlemain\ - \titlesub}
+\title{\titlemain}
+
+% Set author and institution details
+\def\authorforename{Diziet}
+\def\authorsurname{Sma}
+\def\author{\authorforename\ \authorsurname}
+
+% Set institution details
+\def\faculty{Special Circumstances}
+\def\institution{GCU Arbitrary}
+\def\institutionlogo{images/examples/cc-zero.png}
+
+% Assign the value of \title to \inserttitle for later use
+\makeatletter
+\let\inserttitle\@title
+\let\insertauthor\@author
+\let\insertdate\@date
+\makeatother
+
+% Set the space between paragraphs
+\setlength{\parskip}{4mm}
+
+% Shortcuts used in this thesis text
+\newcommand{\AwAg}{Awareness Agent\xspace}
+\newcommand{\awag}{awareness agent\xspace}
+\newcommand{\AwAgs}{Awareness Agents\xspace}
+\newcommand{\awags}{awareness agents\xspace}
+
+\definecolor{orcidlogocol}{HTML}{A6CE39}
+\definecolor{headergrey}{HTML}{999999}
+
+% https://tex.stackexchange.com/questions/823/remove-ugly-borders-around-clickable-cross-references-and-hyperlinks
+\hypersetup{
+	colorlinks,
+	linkcolor={red!40!black},
+	citecolor={blue!40!black},
+	urlcolor={blue!50!black}
+}
+
