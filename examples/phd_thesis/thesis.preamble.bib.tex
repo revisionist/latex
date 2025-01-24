@@ -1,0 +1,80 @@
+% We are using BibLaTeX (biber) for bibliography
+
+% Make sure to use the correct package near the start of thesis.preamble.packages:
+%  \usepackage[style=authoryear,backend=biber]{biblatex}
+
+% Compile using biber: https://en.wikibooks.org/wiki/LaTeX/Bibliographies_with_biblatex_and_biber
+
+% Add bib files here
+\addbibresource{\resourceroot/bibliography/bibliography.bib}
+
+% https://tex.stackexchange.com/questions/309980/parsing-underscores-in-urls-from-mendeley
+\DeclareSourcemap{
+	\maps[overwrite, datatype=bibtex]{
+		\map{ % Replaces '{\_}', '{_}' or '\_' with just '_'
+			\step[fieldsource=url,
+			match=\regexp{\{\\\_\}|\{\_\}|\\\_},
+			replace=\regexp{\_}]
+		}
+		\map{ % Replaces '{'$\sim$'}', '$\sim$' or '{~}' with just '~'
+			\step[fieldsource=url,
+			match=\regexp{\{\$\\sim\$\}|\{\~\}|\$\\sim\$},
+			replace=\regexp{\~}]
+		}
+		\map{ % Replaces '{\$}'
+			\step[fieldsource=url,
+			match=\regexp{\{\\\x{26}\}},
+			replace=\regexp{\x{26}}]
+		}
+	}
+}
+
+% Alias natbib commands to BibLaTeX equivalents
+\let\citep\parencite
+\let\citet\textcite
+
+% Add [Author, Year] as a prefix for each bibliography entry
+\DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
+\renewbibmacro*{begentry}{\mkbibbrackets{\printnames{labelname}, \printfield{year}}\addspace}
+
+% Increase vertical spacing of bibliography entries
+\setlength{\bibitemsep}{1em}
+
+% Make \textcite clickable for both author and year
+\DeclareCiteCommand{\textcite}
+{\usebibmacro{prenote}}
+{\bibhyperref{\printnames{labelname} \printtext[brackets]{\printfield{year}}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+% Make \parencite clickable for both author and year
+\DeclareCiteCommand{\parencite}
+{\usebibmacro{prenote}}
+{\bibhyperref{\printtext[brackets]{\printnames{labelname}, \printfield{year}}}}
+%{\multicitedelim}
+{\addspace} % Add a space between citations
+{\usebibmacro{postnote}}
+
+% Set multicite delimiter
+%\renewcommand*{\multicitedelim}{\addsemicolon\space}
+\renewcommand*{\multicitedelim}{\addspace}
+
+
+
+% Custom macro to split and render multiple URLs
+%\DeclareFieldFormat{url}{
+%	%\def\urlseparator{; }	% Define the separator used in the .bib file
+%	\def\urllist{}			% Initialise an empty list
+%	\forcsvlist{\listadd\urllist}{#1}	% Split the URL field into individual items
+%	\renewcommand*{\do}[1]{\url{##1}\addspace}	% Define what to do with each URL
+%	%\renewcommand*{\do}[1]{\##1 xx}	% Define what to do with each URL
+%	\dolistloop{\urllist}	% Process each URL in the list
+%}
+
+% Custom macro to split and render multiple URLs
+\DeclareFieldFormat{url}{
+	\def\urllist{}			% Initialise an empty list
+	\forcsvlist{\listadd\urllist}{#1}	% Split the URL field into individual items
+	\renewcommand*{\do}[1]{\url{##1}\addspace}	% Define what to do with each URL
+	\dolistloop{\urllist}	% Process each URL in the list
+}

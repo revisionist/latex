@@ -1,74 +1,69 @@
-\documentclass[hidelinks,a4paper,12pt,twoside,openany]{book}
+\documentclass[hidelinks,a4paper,11pt,twoside,openany]{book}
 \usepackage[left=2.5cm,right=2.5cm,top=4cm,bottom=3cm]{geometry}
 
 % Include packages
 \input{thesis.preamble.packages}
 
-\bibliographystyle{abbrvnat}
 \pgfplotsset{width=7cm,compat=1.8}
 
 %\urlstyle{same}
 \graphicspath{ {./images/} }
-\setcitestyle{authoryear,open={(},close={)}}
+%\setcitestyle{authoryear,open={(},close={)}}
 \setcounter{secnumdepth}{4}
+
+% Load general style files
+\input{blocked.sty}
+\input{uhead.sty}
+\input{boxit.sty}
 
 % Include general definitions applicable to a thesis
 \input{thesis.preamble.generic}
 
-% Include specific definitions and commands specific to this thesis
+% Include preamble content specific to bibliography
+% *** Note: we are using BibLaTeX (biber) for bibliography
+\input{thesis.preamble.bib}
+
+% Include definitions and commands specific to this thesis
 \input{thesis.preamble.specific}
+
+% Declare that this is a DRAFT document - CHECK BEFORE SUBMISSION!
+\def\draftmode{true}	% DRAFT
+%\def\draftmode{false}	% FINAL
+
+% Load additional style file for thesis
+\input{thesis.sty}
+
 
 \begin{document}
 
-\begin{center}
-\vspace{15mm}
+% Insert title page as per definitions in thesis.sty and thesis.preamble.specific
+\maketitle
 
-\textsc{\large \institution}\\[1.5cm]
-\singlespacing{
-\huge{\bfseries \titlemain
-}\\[0.1cm] }
-\vspace{15mm}
-
-\Large
-\authorforename\ \textsc{\authorsurname}\\[3cm]
-
-A thesis submitted for the degree of \\ \textit{Doctor of Philosophy}
-\vspace{15mm}
-
-
-\vfill  
-
-\includegraphics[width=4cm]{\institutionlogo}
-
-\vspace{10mm}
-
-\begin{small}
-	\href{https://orcid.org/0000-0000-0000-0000}{
-		\raisebox{-0.2\height}{\includegraphics[width=1em]{images/768px-ORCID_iD.png}}\hspace{0.3em}orcid.org/0000-0000-0000-0000
-	}
-\end{small}
-
-\end{center}
 
 \newpage
+
+% Notes for reviewers of this draft - CHECK \draftmode BEFORE SUBMISSION!
+\ifthenelse{\equal{\draftmode}{true}}{
+	\include{notes-on-draft}
+}{}
 
 \preface
 
 \include{preliminaries/authorship}
 \include{preliminaries/dedications}
 \include{preliminaries/acknowledgements}
-\include{preliminaries/related_pub}
+%\include{preliminaries/related_pub}
 \include{preliminaries/abstract}
 
 \body
 
 \include{chapters/00-example}
-%\include{chapters/01-introduction}
-% Add chapters as needed
 
 \addcontentsline{toc}{chapter}{Bibliography}
-\bibliographystyle{alphabetic}
-\bibliography{bibliography/bibliography}
+%\bibliographystyle{alphabetic}
+%\bibliography{bibliography/bibliography}
+
+\printbibliography[heading=bibintoc,title={Bibliography}]
 
 \begin{appendices}
 \include{appendices/00-app-example}

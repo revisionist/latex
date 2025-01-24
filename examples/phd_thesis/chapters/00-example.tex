@@ -1,7 +1,7 @@
 \chapter{Example Chapter}
 \label{chap:example}
 
-Here is a link to the {\textit{Section~\ref{sec:example.examplesec}}}. There is also this very fine figure {\textit{Figure~\ref{fig:example.c}}}. I also want to draw your attention to the information in this footnote.\footnote{Footnotes are like bicycles - there is always room for n+1} Of course we must also consider \cite{leach2018iain} and \cite{martin2021shadow}.
+Here is a link to the {\textit{Section~\ref{sec:example.examplesec}}}. There is also this very fine figure {\textit{Figure~\ref{fig:example.c}}}. I also want to draw your attention to the information in this footnote\footnote{Footnotes are like bicycles - there is always room for n+1}. Of course we must also consider \citet{leach2018iain} and \citet{martin2021shadow}.
 
 \lipsum[1]
 
@@ -19,11 +19,32 @@ Here is a link to the {\textit{Section~\ref{sec:example.examplesec}}}. There is 
 \end{figure}
 \footnotetext{Attribution: xkcd 1205 (\url{https://xkcd.com/1205})}
 
+\clearpage
+
+\section{Links}
+\label{sec:example.links}
+
+\subsection{DOI}
+\label{sec:example..links.doi}
+
+
+This is an example of a DOI being linked: [\hyperrefDoi{\doiExampleDocument}{hyperdarkerblue}].
+
+On the other hand here we reference a path in a resources bundle:\\
+\hyperrefDoiWithPath{\doiExampleRepository}{/some/example/document.txt}
+
+\subsection{Perma}
+\label{sec:example..links.doi}
+
+
+Here is a URL with an associated \texttt{perma.cc} link:\\
+\urlWithPerma{https://xkcd.com/327/}{EP49-TCM6}
+
+You could also have that as a footnote\footnoteUrlWithPerma{https://xkcd.com/327/}{EP49-TCM6}.
+
 
 \section{Another Section}
 \label{sec:example.another}
-
-\newpage
 
 \lipsum[3]
 
@@ -47,39 +68,55 @@ Here is a link to the {\textit{Section~\ref{sec:example.examplesec}}}. There is 
 \end{figure}
 
 
+\clearpage
+
 \subsection{Foo}
 \label{subsec:example.another_foo}
 
-\lipsum[5-6]
+We are interested in answering \ref{rq:example} and have already formulated \ref{hyp:example}.
+
+\begin{researchquestion}
+	\label{rq:example}
+	A very important question about something or other.
+\end{researchquestion}
+
+\begin{hypothesis}
+	\label{hyp:example}
+	An answer to the question does exist.
+\end{hypothesis}
+
+
 
 
 \subsection{Bar}
 \label{subsec:example.another_bar}
 
 \begin{table}[h]
+	\centering
+	\caption{\textit{Some important numbers}}
 	\small{
-		\centering
+		\renewcommand{\arraystretch}{1.4} 
 		{%
 			\scalebox{0.86}{
-				{\begin{tabular}{|p{5.5cm}|>{\centering\arraybackslash}p{2cm}|p{11cm}|}
+				{\begin{tabular}{|p{5.5cm}|>{\centering\arraybackslash}p{2cm}|p{8cm}|}
 						\hline
 						\rowcolor[HTML]{EFEFEF} 
-						{\color[HTML]{000000} \textbf{Some important numbers}} & {\color[HTML]{000000} \textbf{Frequency}} & {\color[HTML]{000000} \textbf{Category}} \\ \hline
+						{\color[HTML]{000000} \textbf{Response}} & {\color[HTML]{000000} \textbf{Frequency}} & {\color[HTML]{000000} \textbf{Note}} \\ \hline
 						\rowcolor[HTML]{FFFFFF} 
-						1 (Strongly disagree) & 1 & Some text here \\ \hline
+						1 (Strongly disagree) & 1 & Not at all happy \\ \hline
 						\rowcolor[HTML]{FFFFFF} 
-						2 (Disagree) & 0 &  \\ \hline
+						2 (Disagree) & 0 & Meh \\ \hline
 						\rowcolor[HTML]{33FFFF} 
-						3 (Dunno) & 2 & Important stuff \\ \hline
+						3 (Dunno) & 2 & Middle of the road \\ \hline
 						\rowcolor[HTML]{FFFFFF} 
-						4 (Agree) & 12 & Blah  \\ \hline
+						4 (Agree) & 12 & So-so \\ \hline
 						\rowcolor[HTML]{FFFFFF} 
-						5 (Strongly agree) & 9 & Yes  \\ \hline
+						5 (Strongly agree) & 9 & Very happy  \\ \hline
 					\end{tabular}%
 	}}}}
-	\caption{\textit{Some important numbers}}
 	\label{tab:example.a}
 \end{table}
+
 
 \begin{theorem}[Pythagorean theorem]
 	\label{the:example.pythagorean}
@@ -88,7 +125,7 @@ Here is a link to the {\textit{Section~\ref{sec:example.examplesec}}}. There is 
 	\[ x^2 + y^2 = z^2 \]
 \end{theorem}
 
-And a consequence of theorem \ref{the:pythagorean} is the statement in the next 
+And a consequence of theorem \ref{the:example.pythagorean} is the statement in the next 
 corollary.
 
 \begin{corollary}
@@ -100,5 +137,98 @@ corollary.
 	real number \(r\) such that \(b=ra\).
 \end{lemma}
 
+
 \lipsum[7]
 
+\vspace{16mm}
+
+Table \ref{tab:example_long_table} is an example of a long table split over multiple pages.
+
+\vspace{10mm}
+
+\begin{small}
+
+\begin{longtable}{|p{3cm}|c|p{4cm}|}
+	
+	\caption{Example multi-page table} \label{tab:example_long_table} \\
+	\hline 
+
+	\textbf{Column 1} & \textbf{Column 2} & \textbf{Column 3} \\ \hline
+	\endfirsthead
+	
+	\multicolumn{3}{c}{{\bfseries \tablename\ \thetable{} -- continued from previous page}} \\
+	\hline \textbf{Column 1} & \textbf{Column 2} & \textbf{Column 3} \\ \hline
+	
+	\endhead
+	
+	\hline \multicolumn{3}{|r|}{{\footnotesize\textit{Continued on next page}}} \\ \hline
+	\endfoot
+	
+	\hline \hline
+	\endlastfoot
+	
+	\multicolumn{3}{|>{\raggedright\arraybackslash}S{p{10cm}}|}{\footnotesize\textbf{This is a subheading in the table that stretches over all the columns}} \\
+	\hline
+	
+	A & 1 & Foo \\ \hline
+	B & 2 & Bar \\ \hline
+	C & 3 & Baz\\ \hline
+	
+	\multicolumn{3}{|>{\raggedright\arraybackslash}S{p{10cm}}|}{\footnotesize\textbf{This is another subheading}} \\
+	\hline
+	
+	D & 1 & Foo \\ \hline
+	E & 2 & Bar \\ \hline
+	F & 3 & Baz\\ \hline
+	
+	\multicolumn{3}{|>{\raggedright\arraybackslash}p{10cm}|}{\footnotesize\textbf{And so is this}} \\ \hline
+
+	G & 1 & Foo \\ \hline
+	H & 2 & Bar \\ \hline
+	I & 3 & Baz\\ \hline
+
+	\multicolumn{3}{|>{\raggedright\arraybackslash}p{10cm}|}{\footnotesize\textbf{And this}} \\ \hline
+	
+	J & 1 & Foo \\ \hline
+	K & 2 & Bar \\ \hline
+	L & 3 & Baz\\ \hline
+
+	\multicolumn{3}{|>{\raggedright\arraybackslash}p{10cm}|}{\footnotesize\textbf{Also this}} \\ \hline
+	
+	M & 1 & Foo \\ \hline
+	N & 2 & Bar \\ \hline
+	O & 3 & Baz\\ \hline
+
+	\multicolumn{3}{|>{\raggedright\arraybackslash}p{10cm}|}{\footnotesize\textbf{This too}} \\ \hline
+	
+	P & 1 & Foo \\ \hline
+	Q & 2 & Bar \\ \hline
+	R & 3 & Baz\\ \hline
+
+
+	\multicolumn{3}{|>{\raggedright\arraybackslash}p{10cm}|}{\footnotesize\textbf{Once again}} \\ \hline
+
+	S & 1 & Foo \\ \hline
+	T & 2 & Bar \\ \hline
+	U & 3 & Baz\\ \hline
+
+
+	\multicolumn{3}{|>{\raggedright\arraybackslash}p{10cm}|}{\footnotesize\textbf{Finally, so this is}} \\ \hline
+
+	V & 1 & Foo \\ \hline
+	W & 2 & Bar \\ \hline
+	X & 3 & Baz\\ \hline
+
+
+	
+\end{longtable}
+
+\end{small}
+
+
+
+\section{Incuding Files Via Inputs}
+\label{sec:example.inputs}
+
+
+\input{inputs/minipages-example-1.tex}

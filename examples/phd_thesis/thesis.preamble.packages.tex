@@ -1,6 +1,16 @@
 \usepackage[utf8]{inputenc}			% For UTF-8 encoding
-\usepackage{natbib}					% For bibliography
-%\usepackage{hyperref}				% For hyperlinks
+
+\usepackage[style=authoryear,backend=biber]{biblatex}
+%\usepackage[style=authoryear,backend=biber,maxcitenames=2,mincitenames=1]{biblatex}
+
+%\usepackage{lmodern}				% For Latin Modern fonts (https://tug.org/FontCatalogue/latinmodernroman/)
+\usepackage{bera}					% For Bitstream Vera fonts (https://tug.org/FontCatalogue/bera/)
+
+\usepackage{footnote}				% For footnotes
+\usepackage{setspace}				% For line spacing (keep this before hyperref or it may break footnotes)
+\usepackage{xcolor}					% For colours
+\usepackage[hidelinks]{hyperref}	% For hyperlinks (hide links) - be careful changing where this sits in the load order
+
 \usepackage{fancyhdr}				% For custom headers and footers
 \usepackage{graphicx}				% For graphics
 \usepackage{longtable}				% For long tables
@@ -17,15 +27,43 @@
 \usepackage{pgfplotstable}			% For PGF plot tables
 \usepackage{tikz}					% For TikZ graphics
 \usepackage{lipsum}					% For dummy text
-\usepackage{lmodern}				% For Latin Modern fonts
 \usepackage[most]{tcolorbox}		% For colored boxes
 \usepackage{enumitem}				% For custom lists
 \usepackage{booktabs}				% For professional tables
 \usepackage{array}					% For array and tabular environments
-\usepackage{footnote}				% For footnotes
-\usepackage{setspace}				% For line spacing
 \usepackage{latexsym}				% For LaTeX symbols
 \usepackage{academicons}			% For academic icons
 \usepackage{xspace}					% For smart spaces
-\usepackage{svg}					% For smart spaces
-\usepackage[hidelinks]{hyperref}	% For hyperlinks (hide links)
+\usepackage{svg}					% For SVG files
+\usepackage{tcolorbox}				% For formatted boxes
+\usepackage{bbding}					% For dingbats symbols
+\usepackage{ellipsis}				% For better ellipsis handling
+\usepackage{pdfpages}				% For including PDF files
+\usepackage{longtable}				% For multipage tables
+\usepackage{tabularx}				% For tabulars with adjustable-width columns
+\usepackage{ragged2e}				% For raggedright
+\usepackage{adjustbox}				% For adjusting content sizes
+\usepackage{cellspace}				% For vertical spacing in tables
+\usepackage{relsize}				% For relative size adjustments
+\usepackage{xurl}					% For URLs with breaking etc.
+\usepackage{placeins}				% For FloatBarrier etc.
+\usepackage{amsthm}					% For enhanced theorem environments
+\usepackage{mdframed}				% For layout adjustments
+\usepackage{etoolbox}				% For patching the environment
+\usepackage{fontawesome5}			% For fontawesome
+\usepackage{paracol}				% For alternative columnar organisation
+\usepackage{changepage}				% For adjusting the width of columns
+\usepackage{titlecaps}				% For title-style capitalisation
+\usepackage{forest}					% For drawing trees
+\usepackage[capitalise]{cleveref}	% For clever refernces
+\usepackage{listings}				% For code listings
+\usepackage{xparse}					% For parsing commands
+\usepackage{etoolbox}				% For conditionals
+\usepackage{xstring}				% For string manipulation
+%\usepackage{float}					% For explicit float control
+\usepackage{datetime2}				% For more date options
+\usepackage{textcomp}				% For additional text symbols
+\usepackage{ifthen}					% For if .. then logic
+\usepackage{lastpage}				% To reference total page count
+\usepackage{listings}				% For listings
+\usepackage{subcaption}				% For sub figures etc.

@@ -11,11 +11,13 @@
 \def\authorforename{Diziet}
 \def\authorsurname{Sma}
 \def\author{\authorforename\ \authorsurname}
+\def\authororcid{0000-0000-0000-0000}
 
 % Set institution details
 \def\faculty{Special Circumstances}
+\def\institute{}
 \def\institution{GCU Arbitrary}
-\def\institutionlogo{images/examples/cc-zero.png}
+\def\institutionlogo{\resourceroot/images/examples/cc-zero.png}
 
 % Assign the value of \title to \inserttitle for later use
 \makeatletter
@@ -24,20 +26,33 @@
 \let\insertdate\@date
 \makeatother
 
-% Set the space between paragraphs
-\setlength{\parskip}{4mm}
+\def\submitdate{January 2025}
+\def\degree{Doctor of Philosophy}
+\def\supervisor{Skaffen-Amtiskaw}
 
-% Shortcuts used in this thesis text
+
+% Define any commonly used DOIs
+\def\doiExampleDocument{10.1000/182}
+\def\doiExampleRepository{10.5281/zenodo.1234567}
+
+% This DOI is used in the supplemental files.  If \doiIndex is defined, all supplements will contain
+% a link to this DOI as the index document
+\def\doiIndex{10.1000/182}
+
+
+% Other Shortcuts used in this thesis text
 \newcommand{\exmpl}{Some Example Text\xspace}
 
-\definecolor{orcidlogocol}{HTML}{A6CE39}
-\definecolor{headergrey}{HTML}{999999}
 
-% https://tex.stackexchange.com/questions/823/remove-ugly-borders-around-clickable-cross-references-and-hyperlinks
-\hypersetup{
-	colorlinks,
-	linkcolor={red!40!black},
-	citecolor={blue!40!black},
-	urlcolor={blue!50!black}
-}
+% Modify URL/HREF formats
+\renewcommand*{\UrlFont}{\ttfamily\smaller\relax}
+\let\oldhref\href
+\renewcommand{\href}[2]{\oldhref{#1}{\texttt{\smaller #2}}}
 
+
+% Define a new table column type with padding
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}<{\hspace{0.2cm}}}
+
+% Table vertical spacing using cellspace
+\setlength\cellspacetoplimit{6pt}
+\setlength\cellspacebottomlimit{4pt}

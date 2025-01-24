@@ -1,12 +1,24 @@
 
-% Load additional style files
-\input{blocked.sty}
-\input{uhead.sty}
-\input{boxit.sty}
-\input{thesis.sty}
+% Define commands for metadata variables
+\def\titlemain{}
+\def\titlesub{}
+\def\author{}
+\def\authorsurname{}
+\def\authorforename{}
+\def\faculty{}
+\def\institution{}
+\def\institutionlogo{}
+\def\submitdate{}
+\def\degree{}
+\def\supervisor{}
+\def\draftmode{false} % Default value for draft mode
 
 % Set the date for the document
 \date{\today}
+
+% Set the detault resource root.  This is the relative path for including things like images,
+% which we can optionally include in \includegraphics commands etc.
+\newcommand{\resourceroot}{.}
 
 % Define some commonly used commands for a thesis
 \newcommand{\ipc}{{\sf ipc}}
@@ -107,11 +119,47 @@
 \newcommand{\sync}[1]{\raisebox{-1.0ex}{$\;\stackrel{\coop}{\scriptscriptstyle #1}\,$}}
 
 % Theorem and definition environments
-\newtheorem{definition}{Definition}[chapter]
-\newtheorem{theorem}{Theorem}[chapter]
-%\newtheorem{theorem}{Theorem}[section]
-\newtheorem{corollary}{Corollary}[theorem]
-\newtheorem{lemma}[theorem]{Lemma}
+
+\newtheoremstyle{indentedstyle}  % The name of the custom style
+{10pt}      % Space above
+{10pt}      % Space below
+{\normalfont}  % Body font (normal text)
+{2em}       % Indent amount for the whole hypothesis
+{\bfseries} % Theorem head font (bold for "Hypothesis")
+{:}         % Punctuation after theorem header
+{ }         % Space after theorem header
+{\thmname{#1}\ \thmnumber{#2}}  % Theorem heading ("Hypothesis X.")
+
+\theoremstyle{indentedstyle}
+
+\makeatletter
+\@ifclassloaded{book}{
+
+	\newtheorem{definition}{Definition}[chapter]
+	\newtheorem{theorem}{Theorem}[chapter]
+	%\newtheorem{theorem}{Theorem}[section]
+	\newtheorem{corollary}{Corollary}[theorem]
+	\newtheorem{lemma}[theorem]{Lemma}
+	%\newtheorem{hypothesis}{Hypothesis}[chapter]
+	\newtheorem{hypothesis}{Hypothesis}
+
+	\newtheorem{researchquestion}{Research Question}
+	\renewcommand{\theresearchquestion}{RQ\arabic{researchquestion}}
+	
+	\newtheorem{subquestion}{Sub-Question}[researchquestion]
+	\renewcommand{\thesubquestion}{\theresearchquestion\alph{subquestion}}
+	
+	\renewcommand{\thehypothesis}{H\arabic{hypothesis}}
+
+}{}
+\makeatother
+
+
+
+
+
+
+
 
 % References to figures
 \newcommand{\Figref}[1]{Figure~\ref{#1}}
@@ -190,4 +238,165 @@
 
 % Default attribution command (set to footnote or caption as needed)
 \newcommand{\attribution}{\attributionfootnote} % or \attributioncaption
+
+% Chapter abstract box
+\newtcolorbox{chapterabstract}[1][]{
+	colback=white,
+	colframe=black,
+	fonttitle=\bfseries,
+	title=#1,
+	width=\textwidth,
+	left=1cm,
+	right=1cm,
+	coltitle=black,
+	fontupper=\itshape,
+	colbacktitle=white,
+	coltitle=black,
+	colupper=black,
+	enhanced,
+	boxrule=0.5pt,
+	colframe=gray,
+	sharp corners,
+}
+
+% Custom spacing for lists
+\setlist[itemize]{topsep=0mm, partopsep=0mm, parsep=0mm, itemsep=2mm}
+\setlist[enumerate]{topsep=0mm, partopsep=0mm, parsep=0mm, itemsep=2mm}
+
+% Define ellipsis spacing
+\renewcommand{\ellipsisgap}{0.1em}
+
+% Flowcharts etc.
+\usetikzlibrary{shapes.geometric, arrows, calc}
+
+
+% Create hyperlinks with refs
+\newcommand{\hyperrefWithRefBrackets}[2]{%
+	[\ref{#1}]\enspace\hyperref[#1]{#2}%
+}
+\newcommand{\hyperrefWithRef}[2]{%
+	\ref{#1}\enspace--\enspace\hyperref[#1]{#2}%
+}
+
+% Create URLs with perma.cc links
+\newcommand{\urlWithPerma}[2]{%
+	\url{#1}~[\url{https://perma.cc/#2}]%
+}
+\newcommand{\footnoteUrlWithPerma}[2]{%
+	\footnote{\urlWithPerma{#1}{#2}}%
+}
+
+% Create DOI hyperrefs
+\newcommand{\hyperrefDoi}[2]{%
+	\href{https://doi.org/#1}{\textcolor{#2}{\texttt{doi:#1}}}%
+}
+\newcommand{\hyperrefDoiWithPathXX}[2]{%
+	~{\footnotesize \textsf{DOI: }}\hyperrefDoi{#1}{hyperdarkerblue}~{\footnotesize \textsf{[path: \texttt{\detokenize{#2}}]}}%
+}
+\newcommand{\hyperrefDoiWithPath}[2]{%
+	\hyperrefDoi{#1}{hyperdarkerblue}~{\footnotesize \textsf{[path: \texttt{\detokenize{#2}}]}}%
+}
+
+
+% Used for some logical operations
+\newcommand{\true}{true}
+\newcommand{\false}{false}
+
+\definecolor{orcidlogocol}{HTML}{A6CE39}
+\definecolor{headergrey}{HTML}{999999}
+\definecolor{darkred}{HTML}{8B0000}
+
+% Set global format for datetime2
+\DTMsetdatestyle{iso} % Use ISO style for date
+\DTMsetup{
+	datesep=.,
+	timesep=:,
+	showseconds=false,
+	showzone=false
+}
+
+% Set colours for hyperlinks
+% https://tex.stackexchange.com/questions/823/remove-ugly-borders-around-clickable-cross-references-and-hyperlinks
+%\hypersetup{
+	%	colorlinks = true,
+	%	linkcolor={red!40!black},
+	%	citecolor={blue!40!black},
+	%	urlcolor={blue!50!black}
+	%}
+
+\definecolor{hyperblue}{rgb}{0.1, 0.1, 0.5}
+\definecolor{hyperdarkerblue}{rgb}{0.0, 0.1, 0.4}
+
+\hypersetup{
+	colorlinks = true,
+	linkcolor = hyperdarkerblue,
+	citecolor = hyperblue,
+	urlcolor  = hyperblue,
+	filecolor = hyperblue
+}
+
+
+% Listings styles for Python and Java
+
+\definecolor{eclipseStrings}{RGB}{42,0.0,255}
+\definecolor{eclipseKeywords}{RGB}{127,0,85}
+\colorlet{numb}{magenta!60!black}
+
+\lstdefinestyle{pythonStyle}{
+	language=Python,
+	basicstyle=\ttfamily\scriptsize,
+	keywordstyle=\color{blue}\bfseries,
+	stringstyle=\color{teal},
+	commentstyle=\color{gray},
+	tabsize=3,
+	breakindent=1.5em,
+	showstringspaces=false,
+	breaklines=true,
+	frame=single,
+	captionpos=b
+}
+
+\lstdefinestyle{javaStyle}{
+	language=Java,
+	basicstyle=\ttfamily\scriptsize,
+	keywordstyle=\color{purple}\bfseries,
+	stringstyle=\color{orange},
+	commentstyle=\color{gray},
+	tabsize=3,
+	breakindent=1.5em,
+	showstringspaces=false,
+	breaklines=true,
+	frame=single,
+	captionpos=b
+}
+
+\lstdefinestyle{jsonStyle}{
+	basicstyle=\ttfamily\scriptsize,
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{eclipseStrings}, % style of comment
+	stringstyle=\color{eclipseKeywords}, % style of strings
+	numberstyle=\scriptsize,
+	showstringspaces=false,
+	tabsize=3,
+	breakindent=1.5em,
+	stepnumber=1,
+	numbersep=8pt,
+	breaklines=true,
+	frame=single,
+	captionpos=b,
+	string=[s]{"}{"},
+	comment=[l]{:\ "},
+	morecomment=[l]{:"},
+	literate=
+	*{0}{{{\color{numb}0}}}{1}
+	{1}{{{\color{numb}1}}}{1}
+	{2}{{{\color{numb}2}}}{1}
+	{3}{{{\color{numb}3}}}{1}
+	{4}{{{\color{numb}4}}}{1}
+	{5}{{{\color{numb}5}}}{1}
+	{6}{{{\color{numb}6}}}{1}
+	{7}{{{\color{numb}7}}}{1}
+	{8}{{{\color{numb}8}}}{1}
+	{9}{{{\color{numb}9}}}{1}
+}
 
