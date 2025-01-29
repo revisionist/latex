@@ -36,16 +36,21 @@
 
 \begin{document}
 
+\phantomsection
+\addcontentsline{toc}{chapter}{Title Page}
+
 % Insert title page as per definitions in thesis.sty and thesis.preamble.specific
 \maketitle
 
 
-\newpage
-
 % Notes for reviewers of this draft - CHECK \draftmode BEFORE SUBMISSION!
 \ifthenelse{\equal{\draftmode}{true}}{
+	\newpage
 	\include{notes-on-draft}
 }{}
+
+\cleardoublepage
+
 
 \preface
 
@@ -58,10 +63,6 @@
 \body
 
 \include{chapters/00-example}
-
-\addcontentsline{toc}{chapter}{Bibliography}
-%\bibliographystyle{alphabetic}
-%\bibliography{bibliography/bibliography}
 
 \printbibliography[heading=bibintoc,title={Bibliography}]
 
