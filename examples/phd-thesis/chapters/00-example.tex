@@ -1,9 +1,11 @@
+\cleardoublepageforprint	% In print mode, this will do a \cleardoublepage, otherwise just a \clearpage
+
 \chapter{Example Chapter}
 \label{chap:example}
 
-Here is a link to the {\textit{Section~\ref{sec:example.examplesec}}}. There is also this very fine figure {\textit{Figure~\ref{fig:example.c}}}. I also want to draw your attention to the information in this footnote\footnote{Footnotes are like bicycles - there is always room for n+1}. Of course we must also consider \citet{leach2018iain} and \citet{martin2021shadow}.
+Here is a link to the Research Questions in Section~\ref{sec:example.rq}. There is also this very fine Figure ~\ref{fig:example.c}. I also want to draw your attention to the information in this footnote\footnote{Footnotes are like bicycles -- there is always room for n+1}. Of course we must also consider \citet{leach2018iain} and \citet{martin2021shadow}.
 
-\lipsum[1]
+\lipsum[2]
 
 \section{Example Section}
 \label{sec:example.examplesec}
@@ -19,13 +21,11 @@ Here is a link to the {\textit{Section~\ref{sec:example.examplesec}}}. There is 
 \end{figure}
 \footnotetext{Attribution: xkcd 1205 (\url{https://xkcd.com/1205})}
 
-\clearpage
-
 \section{Links}
 \label{sec:example.links}
 
 \subsection{DOI}
-\label{sec:example..links.doi}
+\label{sec:example.links.doi}
 
 
 This is an example of a DOI being linked: [\hyperrefDoi{\doiExampleDocument}{hyperdarkerblue}].
@@ -34,24 +34,87 @@ On the other hand here we reference a path in a resources bundle:\\
 \hyperrefDoiWithPath{\doiExampleRepository}{/some/example/document.txt}
 
 \subsection{Perma}
-\label{sec:example..links.doi}
-
+\label{sec:example.links.perma}
 
 Here is a URL with an associated \texttt{perma.cc} link:\\
 \urlWithPerma{https://xkcd.com/327/}{EP49-TCM6}
 
 You could also have that as a footnote\footnoteUrlWithPerma{https://xkcd.com/327/}{EP49-TCM6}.
 
+\vspace{1em}
 
-\section{Another Section}
+\clearpage
+
+\section{Research Questions}
+\label{sec:example.rq}
+
+We formulated the following research questions and hypotheses.  We will later go on to reflect on these in our final chapter [\ref{sec:example2.rq}].
+
+\subsection{Non-coercive Diplomatic Frameworks}
+\label{subsec:example.rq.diplomatic}
+
+\begin{researchquestion}
+	\label{rq:diplomatic}
+	\RQDiplomatic
+\end{researchquestion}
+
+We propose the following hypotheses in relation to this question, in order to frame the research and guide the methodology:
+
+\begin{hypothesis}
+	\label{hyp:diplomatic.first}
+	\HDiplomaticA
+\end{hypothesis}
+
+\begin{hypothesis}
+	\label{hyp:diplomatic.second}
+	\HDiplomaticB
+\end{hypothesis}
+
+\clearpage
+
+\subsection{AI Mediators}
+\label{subsec:example.rq.minds}
+
+\begin{researchquestion}
+	\label{rq:minds}
+	\RQMinds
+\end{researchquestion}
+
+This primary research question has the following sub-questions:
+
+\begin{subquestion}
+	\label{srq:minds.a}
+	\SRQMindsA
+\end{subquestion}
+
+\begin{subquestion}
+	\label{srq:minds.b}
+	\SRQMindsB
+\end{subquestion}
+
+We propose the following hypotheses in relation to this question:
+
+\begin{hypothesis}
+	\label{hyp:minds.first}
+	\HMindsA
+\end{hypothesis}
+
+\begin{hypothesis}
+	\label{hyp:minds.second}
+	\HMindsB
+\end{hypothesis}
+
+
+\clearpage
+
+
+\section{Another Example}
 \label{sec:example.another}
-
-\lipsum[3]
 
 \begin{figure}[h!]
 	\centering
 	\captionsetup{justification=centering}
-	\includegraphics[height=8cm]{images/examples/xkcd_1205_is_it_worth_the_time_2x.png}
+	\includegraphics[height=9cm]{images/examples/xkcd_1205_is_it_worth_the_time_2x.png}
 	\caption[Example figure B]{I feel this table is relevant to many aspects of PhD work\protect\footnotemark}
 	\label{fig:example.b}
 \end{figure}
@@ -72,24 +135,6 @@ You could also have that as a footnote\footnoteUrlWithPerma{https://xkcd.com/327
 
 \subsection{Foo}
 \label{subsec:example.another_foo}
-
-We are interested in answering \ref{rq:example} and have already formulated \ref{hyp:example}.
-
-\begin{researchquestion}
-	\label{rq:example}
-	A very important question about something or other.
-\end{researchquestion}
-
-\begin{hypothesis}
-	\label{hyp:example}
-	An answer to the question does exist.
-\end{hypothesis}
-
-
-
-
-\subsection{Bar}
-\label{subsec:example.another_bar}
 
 \begin{table}[h]
 	\centering
@@ -140,7 +185,8 @@ corollary.
 
 \lipsum[7]
 
-\vspace{16mm}
+\clearpage
+
 
 Table \ref{tab:example_long_table} is an example of a long table split over multiple pages.
 
@@ -219,16 +265,14 @@ Table \ref{tab:example_long_table} is an example of a long table split over mult
 	W & 2 & Bar \\ \hline
 	X & 3 & Baz\\ \hline
 
-
-	
 \end{longtable}
 
 \end{small}
 
+\clearpage
 
 
 \section{Incuding Files Via Inputs}
 \label{sec:example.inputs}
-
 
 \input{inputs/minipages-example-1.tex}

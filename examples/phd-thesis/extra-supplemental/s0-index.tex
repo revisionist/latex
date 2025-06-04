@@ -1,0 +1,36 @@
+\documentclass[hidelinks,a4paper,11pt,openany]{article}
+\usepackage[left=2.6cm,right=2.6cm,top=3cm,bottom=3cm]{geometry}
+
+% Uncomment for label debugging
+%\usepackage{showlabels}
+
+% Set a DOI for this item)
+\def\doiThis{10.21954/ou.rd.28045100}
+
+% For the INDEX itself, do not show the \doiIndex line, even if defined
+\def\showIndexDoi{\false}
+
+% Set the SUPPLEMENT NUMBER for this item
+\newcommand{\supplementNumber}{0}
+
+% Set the SUPPLEMENT NAME for this item
+\newcommand{\supplementName}{Index of Thesis Supplemental Material}
+
+
+% Include preamble specific to supplemental material
+\input{_supplemental.preamble}
+
+% Load style file for supplements
+\input{supplemental.sty}
+
+\begin{document}
+
+\section*{\supplementName}
+
+% ***** BEGIN CONTENT *****
+
+\input{content-s0.tex}
+
+% ***** END CONTENT *****
+
+\end{document}

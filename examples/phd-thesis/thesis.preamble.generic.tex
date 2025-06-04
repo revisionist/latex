@@ -16,6 +16,12 @@
 % Set the date for the document
 \date{\today}
 
+% Define toggles
+\newif\ifprintversion	% Toggle for print version of thesis
+\printversionfalse
+\newif\ifdraftmode		% Toggle for draft mode
+\draftmodefalse
+
 % Set the detault resource root.  This is the relative path for including things like images,
 % which we can optionally include in \includegraphics commands etc.
 \newcommand{\resourceroot}{.}
@@ -134,7 +140,6 @@
 
 \makeatletter
 \@ifclassloaded{book}{
-
 	\newtheorem{definition}{Definition}[chapter]
 	\newtheorem{theorem}{Theorem}[chapter]
 	%\newtheorem{theorem}{Theorem}[section]
@@ -142,24 +147,8 @@
 	\newtheorem{lemma}[theorem]{Lemma}
 	%\newtheorem{hypothesis}{Hypothesis}[chapter]
 	\newtheorem{hypothesis}{Hypothesis}
-
-	\newtheorem{researchquestion}{Research Question}
-	\renewcommand{\theresearchquestion}{RQ\arabic{researchquestion}}
-	
-	\newtheorem{subquestion}{Sub-Question}[researchquestion]
-	\renewcommand{\thesubquestion}{\theresearchquestion\alph{subquestion}}
-	
-	\renewcommand{\thehypothesis}{H\arabic{hypothesis}}
-
 }{}
 \makeatother
-
-
-
-
-
-
-
 
 % References to figures
 \newcommand{\Figref}[1]{Figure~\ref{#1}}
@@ -269,7 +258,6 @@
 % Flowcharts etc.
 \usetikzlibrary{shapes.geometric, arrows, calc}
 
-
 % Create hyperlinks with refs
 \newcommand{\hyperrefWithRefBrackets}[2]{%
 	[\ref{#1}]\enspace\hyperref[#1]{#2}%
@@ -291,10 +279,36 @@
 	\href{https://doi.org/#1}{\textcolor{#2}{\texttt{doi:#1}}}%
 }
 \newcommand{\hyperrefDoiWithPathXX}[2]{%
-	~{\footnotesize \textsf{DOI: }}\hyperrefDoi{#1}{hyperdarkerblue}~{\footnotesize \textsf{[path: \texttt{\detokenize{#2}}]}}%
+	~{\footnotesize \textsf{DOI: }}\hyperrefDoi{#1}{hyperdoi}~{\footnotesize \textsf{[path: \texttt{\detokenize{#2}}]}}%
 }
 \newcommand{\hyperrefDoiWithPath}[2]{%
-	\hyperrefDoi{#1}{hyperdarkerblue}~{\footnotesize \textsf{[path: \texttt{\detokenize{#2}}]}}%
+	\hyperrefDoi{#1}{hyperdoi}~{\footnotesize \textsf{[path: \texttt{\detokenize{#2}}]}}%
+}
+
+% Blank page for cleardoublepage
+\newcommand{\cleardoublepageblank}{%
+	\clearpage
+	\ifodd\value{page}\else
+	\thispagestyle{empty}%
+	\null
+	\newpage
+	\fi
+}
+
+\newcommand{\cleardoublepageforprint}{%
+	\ifprintversion
+		\cleardoublepage
+	\else
+		\clearpage
+	\fi
+}
+
+\newcommand{\cleardoublepageforprintblank}{%
+	\ifprintversion
+		\cleardoublepageblank
+	\else
+		\clearpage
+	\fi
 }
 
 
@@ -314,27 +328,6 @@
 	showseconds=false,
 	showzone=false
 }
-
-% Set colours for hyperlinks
-% https://tex.stackexchange.com/questions/823/remove-ugly-borders-around-clickable-cross-references-and-hyperlinks
-%\hypersetup{
-	%	colorlinks = true,
-	%	linkcolor={red!40!black},
-	%	citecolor={blue!40!black},
-	%	urlcolor={blue!50!black}
-	%}
-
-\definecolor{hyperblue}{rgb}{0.1, 0.1, 0.5}
-\definecolor{hyperdarkerblue}{rgb}{0.0, 0.1, 0.4}
-
-\hypersetup{
-	colorlinks = true,
-	linkcolor = hyperdarkerblue,
-	citecolor = hyperblue,
-	urlcolor  = hyperblue,
-	filecolor = hyperblue
-}
-
 
 % Listings styles for Python and Java
 

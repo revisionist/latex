@@ -1,5 +1,6 @@
 *template.pdf
 s[0-9][0-9]*-*.pdf
 s[0-9]-*.pdf
+s-*.pdf
 
 

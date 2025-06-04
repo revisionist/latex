@@ -1,0 +1,89 @@
+\cleardoublepageforprint	% In print mode, this will do a \cleardoublepage, otherwise just a \clearpage
+
+%\section*{Copyright \& Licensing}
+{\LARGE\textsc{Copyright \& Licensing}}
+\phantomsection
+\label{sec:thesis-copyright}
+
+\par \vspace{0.7em}
+
+
+\textcopyright\ \the\year\ \textbf{\author}. All rights reserved.
+
+\par \vspace{0.8em}
+
+This thesis is licensed under \texttt{CC BY-NC-ND 4.0}.
+%This thesis is licensed under \texttt{CC BY-NC-SA 4.0}.
+
+\par \vspace{0.1em}
+
+%\includegraphics[width=0.03\textwidth]{../images/cc/cc.xlarge}
+%\includegraphics[width=0.03\textwidth]{../images/cc/by.xlarge}
+%\includegraphics[width=0.03\textwidth]{../images/cc/nc-eu.xlarge}
+%\includegraphics[width=0.03\textwidth]{../images/cc/nd.xlarge}
+
+\newcommand{\cciconYY}[3]{%
+	\noindent\raisebox{-0.2\height}{\includegraphics[width=0.03\textwidth]{#1}}%
+	\hspace{1em}\texttt{#2} -- #3\par
+}
+
+\newcommand{\cciconZZ}[3]{%
+	\noindent\raisebox{-0.2\height}{\includegraphics[width=0.03\textwidth]{#1}}%
+	\hspace{1.2em}\texttt{#2}\hspace{1.2em}#3\par
+}
+
+
+\newcommand{\ccicon}[3]{%
+	\noindent\raisebox{-0.2\height}{\includegraphics[width=0.03\textwidth]{#1}}%
+	\hspace{1.2em}\texttt{#2}\hspace{1.2em}\texttt{#3}\par
+}
+
+
+% Usage
+\ccicon{../images/cc/cc.xlarge}{CC}{Creative Commons}
+\ccicon{../images/cc/by.xlarge}{BY}{Attribution Required}
+\ccicon{../images/cc/nc-eu.xlarge}{NC}{Commercial Use Not Allowed}
+\ccicon{../images/cc/nd.xlarge}{ND}{No Derivatives}
+%\ccicon{../images/cc/sa.xlarge}{SA}{Share Alike}
+
+To view a copy of this license, visit: \url{https://creativecommons.org/licenses/by-nc-nd/4.0/}.
+%To view a copy of this license, visit: \url{https://creativecommons.org/licenses/by-nc-sa/4.0/}.
+
+\vspace{1em}
+
+% ******************************** 
+\textcolor{darkred}{\textit{\footnotesize The above is an illustration of a \texttt{BY-NC-ND} license for a published thesis, which prevents people remixing it directly and is an appropriate choice for protecting this type of academic work.  However you are free to remix and share this \textit{example}, as per the \texttt{BY-NC-SA} license applied to this whole repository.}}
+% ******************************** 
+
+
+\par \vspace{8em}
+%\vspace{2.5em}
+
+
+%\section*{Document Object Identifiers}
+{\LARGE\textsc{Document Object Identifiers}}
+\phantomsection
+\label{sec:thesis-doi}
+
+\par \vspace{0.5em}
+
+% ******************************** 
+\textcolor{darkred}{\textit{\footnotesize Including this as an example -- you are unlikely to obtain an actual DOI for the thesis until right at the end of the process!}}
+% ******************************** 
+
+\ifprintversion
+
+	The DOI for this thesis is: {\large \href{https://doi.org/\doiExampleDocument}{\textcolor{hyperdarkergray}{\texttt{https://doi.org/\doiExampleDocument}}}}%
+
+	Supplemental material is indexed at: {\large \href{https://doi.org/\doiIndex}{\textcolor{hyperdarkergray}{\texttt{https://doi.org/\doiIndex}}}}%
+	
+\else
+
+	The DOI for this thesis is: {\large \hyperrefDoi{\doiExampleDocument}{hyperdarkerblue}}
+	
+	Supplemental material is indexed at: {\large \hyperrefDoi{\doiIndex}{hyperdarkerblue}}
+
+\fi
+
+
+

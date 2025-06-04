@@ -1,0 +1,70 @@
+% Include packages
+\input{../thesis.preamble.packages}
+
+% Include general definitions applicable to a thesis
+\input{../thesis.preamble.generic}
+
+% Include specific definitions and commands specific to this thesis
+\input{../thesis.preamble.specific}
+
+% Update resourceroot to reflect that these files are in a subdirectory
+\renewcommand{\resourceroot}{..}
+
+% Set paragraph properties
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.9em}
+
+\renewcommand{\headrule}{\hbox to\headwidth{\color{gray}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrule}{\hbox to\headwidth{\color{gray}\leaders\hrule height \footrulewidth\hfill}}
+
+% Add thesisref command to use for links that should use \ref* (i.e. external to document)
+% By defining as a named command we can redefine if needed without needing to edit individual items
+\newcommand{\thesisref}[1]{\ref*{#1}}
+
+\definecolor{hyperblue}{rgb}{0.1, 0.1, 0.5}
+\definecolor{hyperdarkerblue}{rgb}{0.0, 0.1, 0.4}
+\definecolor{hypergray}{rgb}{0.2, 0.2, 0.2}
+\definecolor{hyperdarkergray}{rgb}{0.1, 0.1, 0.1}
+
+\colorlet{hyperdoi}{hyperdarkerblue}	% Used for DOI links in the document
+
+\hypersetup{
+	colorlinks = true,
+	linkcolor = hyperdarkerblue,
+	citecolor = hyperblue,
+	urlcolor  = hyperblue,
+	filecolor = hyperblue
+}
+
+
+\fancypagestyle{reporting}{
+	\fancyhf{}
+	
+	% Header customization
+	\renewcommand{\headrulewidth}{0.4pt} % Line above header
+	\fancyhead[L]{
+		\textcolor{gray}{\textit{{\footnotesize \titlemain} }} \\
+		\textcolor{gray}{\textbf{\reportName}}
+	}
+	
+	% Footer customization
+	\renewcommand{\footrulewidth}{0.4pt} % Line above footer
+
+	\fancyfoot[L]{
+		\scriptsize 
+		\textcolor{gray}{\footnotesize \author} \\%
+		\textcolor{gray}{\tiny \today}%
+	}
+
+	\fancyfoot[R]{
+		\small
+		\textcolor{darkgray}{\textit{Page \thepage~of~\pageref{LastPage}}}
+	}
+
+}
+
+
+\setlength{\topskip}{25pt}
+
+\pagestyle{reporting}
+

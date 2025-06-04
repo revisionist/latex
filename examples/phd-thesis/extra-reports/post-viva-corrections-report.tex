@@ -1,0 +1,113 @@
+\documentclass[hidelinks,a4paper,11pt,openany]{article}
+\usepackage[left=2cm,right=2cm,top=3cm,bottom=3cm]{geometry}
+
+
+% Set the REPORT NAME for this item
+\newcommand{\reportName}{Corrections Report}
+
+% ******************************************************
+
+% Include preamble specific to supplemental material
+\input{_reports.preamble}
+
+% Enable referencing from the thesis
+\externaldocument{../thesis}
+
+
+\begin{document}
+
+%\section*{Summary}
+This document details the minor corrections and other changes made to the thesis since examination. Section numbers refer to the main thesis.  The Examiners have requested the following minor corrections to the thesis:
+\begin{itemize}[topsep=0pt, itemsep=8pt]
+	\item The reflections on \thesisref{rq:minds} [\thesisref{subsec:example2.rq:minds}] are overly cynical towards Minds and their motivations -- please re-evaluate your assessment, Minds are people too.
+	\item Section \thesisref{sec:example.another} does not adequately address the design decision to imbue Minds with characteristics of	
+	altruism and benevolence towards their biological charges; consider expanding this.
+\end{itemize}
+
+
+%\newpage
+
+%\input{../notes-on-draft-2.tex}
+
+\section*{Contents}
+\begin{itemize}
+	\item \hyperrefWithRef{sec:requested-mods}{Requested Modifications}
+	\vspace{0.6em}
+	\begin{itemize}
+		\item \hyperrefWithRef{subsec:requested-mods.cynicism}{Cycnical Attitude to Minds}
+		\item \hyperrefWithRef{subsec:requested-mods.altruism}{Altruism and Benevolence as Characteristics of Minds}
+	\end{itemize}
+	\vspace{0.8em}
+	\item \hyperrefWithRef{sec:additional-mods}{Additional Modifications}
+	\vspace{0.6em}
+	\begin{itemize}
+		\item \hyperrefWithRef{subsec:additional-mods.format}{Formatting \& Layout}
+	\end{itemize}
+	
+\end{itemize}
+
+\clearpage
+
+% Disable hyperlinks for refs from this point (refs will point to main thesis body)
+%\renewcommand{\ref}[1]{\ref*{#1}}
+
+% Add a page reference into each \thesisref from this point onwards
+\renewcommand{\thesisref}[1]{\ref*{#1}~(p.\pageref*{#1})}
+
+
+% **** SECTION ****
+\section{Requested Modifications}
+\label{sec:requested-mods}
+
+% ** SUBSECTION **
+\subsection{Cycnical Attitude to Minds}
+\label{subsec:requested-mods.cynicism}
+
+\textit{The reflections on \thesisref{rq:minds} [\thesisref{subsec:example2.rq:minds}] are overly cynical towards Minds and their motivations -- please re-evaluate your assessment, Minds are people too.}
+
+The following changes were made to address this:
+
+\begin{itemize}[topsep=0pt, itemsep=8pt]
+	\item Conduct additional research into the motivations, limitations and feelings of Minds, by reading \textit{Excession} again.
+	\item Add Section ``Minds are People Too'' [\thesisref{subsec:example2.reflections.minds}] as a reflection, discussing the mental states that we can ascribe to Culture Minds.
+\end{itemize}
+
+
+% ** SUBSECTION **
+\subsection{Altruism and Benevolence as Characteristics of Minds}
+\label{subsec:requested-mods.altruism}
+
+\textit{Section \thesisref{sec:example.another} does not adequately address the design decision to imbue Minds with characteristics of	
+	altruism and benevolence towards their biological charges; consider expanding this.}
+
+This is an important point.  As noted in \textit{Look to Windward}, a detectable flavour of the intellectual character and the basic morality of the Minds' biological precursor species remained present in the consciousness of subsequent generations of Minds.  Furthermore, on those occasions where all of this ``metalogical baggage'' was designed out, it was found that such Minds would consistently Sublime at the first available opportunity.
+
+To reflect this, we expanded Section \thesisref{sec:example.another} to briefly highlight this, citing additional references to substantiate this.  We also added an additional reflection, ``Intentional Metalogical Baggage of Minds'' [\thesisref{subsec:example2.reflections.baggage}] that focussed on this question.
+
+
+
+\clearpage
+
+
+% **** SECTION ****
+\section{Additional Modifications}
+\label{sec:additional-mods}
+
+
+% ** SUBSECTION **
+\subsection{Formatting \& Layout}
+\label{subsec:additional-mods.format}
+
+Adjusted document margins to make better use of page space, with a marginally larger margin to allow for an offset version for printing \& binding.
+
+Previous geometry was: \texttt{[left=2.5cm,right=2.5cm,top=4cm,bottom=3cm]}\\
+New geometry: \texttt{[left=2.6cm,right=2.6cm,top=3cm,bottom=2.7cm]}
+
+We also made the following specific layout/formatting and minor content changes:
+
+\begin{itemize}
+	\item Increase size of Figure \thesisref{fig:example.b} for improved legibility.
+	\item Alter the pagination of Section \thesisref{sec:example.rq} to improve readability.
+\end{itemize}
+
+\end{document}

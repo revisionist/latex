@@ -1,0 +1,29 @@
+This document contains links to resources relating to the PhD thesis by \author:\\
+\textit{\titlemain}.
+
+A collection of materials for this research is available at: \textbf{\hyperrefDoi{\doiExampleRepository}{hyperdoi}}.
+
+\vspace{0.5cm}
+
+
+% Define in preamble or before use
+\newcommand{\supplementEntry}[4]{%
+	\vspace*{1mm}%
+	\noindent
+	\phantomsection
+	\renewcommand{\arraystretch}{1.1}
+	\setlength{\tabcolsep}{8pt}
+	\begin{tabular}{p{4.5cm} p{10cm}}
+		\multicolumn{2}{l}{\textbf{#1} \quad \textbf{#2}} \\[0.0cm]
+		\textbf{\hyperrefDoi{#3}{hyperdoi}} & #4
+	\end{tabular}
+	\vspace{0.5cm}
+}
+
+
+% S1
+\supplementEntry{S1}{Example A}{\doiSOne}{The first of two example supplements.}
+
+% S2
+\supplementEntry{S1}{Example B}{\doiSTwo}{The second of two example supplements.}
+

@@ -1,0 +1,35 @@
+% Include packages
+\input{../thesis.preamble.packages}
+
+% Include general definitions applicable to a thesis
+\input{../thesis.preamble.generic}
+
+% Include specific definitions and commands specific to this thesis
+\input{../thesis.preamble.specific}
+
+% Update resourceroot to reflect that supplemental files are in a subdirectory
+\renewcommand{\resourceroot}{..}
+
+% Enable referencing from the thesis
+\externaldocument{\resourceroot/thesis}
+
+% Define toggles
+\newif\ifprintversion	% Toggle for print version of thesis
+\printversionfalse
+\newif\ifdraftmode		% Toggle for draft mode
+\draftmodefalse
+
+% Set paragraph properties
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.9em}
+
+% Set up custom IDs, labels etc.
+\newcommand{\supplementID}{S\supplementNumber}
+\newcommand{\supplementTitle}{\supplementID\quad\supplementName}
+%\edef\supplementLabelIdentifier{s\supplementNumber.}
+\newcommand{\supplementLabelIdentifier}{s\supplementNumber.}
+
+% Command to generate section labels
+%\newcommand{\supplementLabel}[2]{#1\supplementLabelIdentifier#2}
+
+
