@@ -1,15 +1,9 @@
-\documentclass[hidelinks,a4paper,11pt,twoside,openright]{book}
+\documentclass[hidelinks,a4paper,11pt,twoside,openany]{book}
 
 % Uncomment for label debugging
 %\usepackage[inline]{showlabels}
 %\renewcommand{\showlabelfont}{\small\ttfamily\color{gray}}
 %\showlabels{ref}
-
-% Set initial DOI, SUPPLEMENT NUMBER & SUPPLEMENT NAME
-\def\doiThis{\doiSZero}
-\newcommand{\supplementNumber}{0}
-\newcommand{\supplementName}{Index of Thesis Supplemental Material}
-
 
 % Include preamble specific to supplemental material
 \input{_supplemental.preamble}
@@ -20,6 +14,9 @@
 % Set print or digital versions
 %\printversiontrue		% PRINT
 \printversionfalse		% DIGITAL
+
+% This a combined or standalone version (adds layout and content changes)
+\combinedsupplementstrue
 
 % Set up document geometry
 \ifprintversion
@@ -34,89 +31,14 @@
 % Configure link colours (defined in thesis.sty and uses \ifprintversion)
 \configurehyperref
 
-\pagestyle{supplementary-alt}
-
-\newcounter{localpage}
-\setcounter{localpage}{1}
-
-\usepackage{everypage}
-\AddEverypageHook{\stepcounter{localpage}}
+\setpagestyle
 
 
 \begin{document}
 
-\phantomsection
-%\addcontentsline{toc}{chapter}{Title Page}
-
-% Insert title page as per definitions in thesis.sty and thesis.preamble.specific
-\makesupptitle
-\cleardoublepageforprintblank
-
-\include{supplemental-info}
-
-\cleardoublepageforprintblank
-
-\pagenumbering{roman}
-\tableofcontents
-\setcounter{tocdepth}{0}
-\cleardoublepageforprintblank
-\pagenumbering{arabic}
-
-
-\newcommand{\resetsuppcounters}{
-	\setcounter{table}{0}
-	\setcounter{figure}{0}
-	\setcounter{section}{0}
-	\setcounter{lstlisting}{0}
-	\setcounter{localpage}{1}
-}
-
-\newcommand{\interstitialpage}{%
-	\cleardoublepageforprintblank
-	\thispagestyle{empty}
-	\null
-	\vfill
-	\begin{center}
-		\Huge \bfseries Supplement \supplementID\\[1em]
-		\LARGE \supplementName
-	\end{center}
-	\vfill
-	\null
-	\cleardoublepageforprintblank
-}
-
-\makeatletter
-\newcommand{\includesupplement}[3]{%
-	\cleardoublepageforprintblank
-	\renewcommand{\supplementNumber}{#1}%
-	\renewcommand{\supplementName}{#2}%
-	\renewcommand{\doiThis}{#3}%
-	\interstitialpage
-	\resetsuppcounters
-	\pagestyle{supplementary-alt}%
-	\section*{\supplementTitle}%
-	\addcontentsline{toc}{section}{\supplementTitle}%
-	\begingroup
-		\let\addcontentsline\@gobblethree
-		\input{content-s#1.tex}%
-	\endgroup
-}
-\makeatother
-
-
 % ***** BEGIN SUPPLEMENTS *****
 
-% S0
-\cleardoublepageforprintblank
-\interstitialpage
-\resetsuppcounters
-\pagestyle{supplementary-alt}
-\section*{\supplementTitle}
-\addcontentsline{toc}{section}{\supplementTitle}
-\input{content-s0.tex}
-
-%\includesupplement{0}{Index of Thesis Supplemental Material}{\doiSZero}
-
+\includesupplement{0}{Index of Thesis Supplemental Material}{\doiSZero}
 \includesupplement{1}{Example Supplement A}{\doiSOne}
 \includesupplement{2}{Example Supplement B}{\doiSTwo}
 

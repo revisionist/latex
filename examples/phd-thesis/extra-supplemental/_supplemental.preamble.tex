@@ -19,17 +19,80 @@
 \newif\ifdraftmode		% Toggle for draft mode
 \draftmodefalse
 
+% Toggle for combined supplements mode, which adds extra document pages and changes page layout
+\newif\ifcombinedsupplements
+\combinedsupplementsfalse
+
 % Set paragraph properties
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.9em}
 
-% Set up custom IDs, labels etc.
+\providecommand{\doiThis}{}
+\providecommand{\supplementNumber}{}
+\providecommand{\supplementName}{}
+
 \newcommand{\supplementID}{S\supplementNumber}
 \newcommand{\supplementTitle}{\supplementID\quad\supplementName}
-%\edef\supplementLabelIdentifier{s\supplementNumber.}
-\newcommand{\supplementLabelIdentifier}{s\supplementNumber.}
+\providecommand{\supplementID}{S\supplementNumber}
+\providecommand{\supplementTitle}{\supplementID\quad\supplementName}
 
-% Command to generate section labels
-%\newcommand{\supplementLabel}[2]{#1\supplementLabelIdentifier#2}
+% Set section numbering depth
+\setcounter{secnumdepth}{4}
+
+% Set TOC depth
+\setcounter{tocdepth}{2}
+
+% Set TOC spacing between number and title
+\makeatletter
+\@ifclassloaded{book}{
+	%\setlength\cftsecnumwidth{3em}
+	\cftsetindents{chapter}{0em}{2em}
+	\cftsetindents{section}{1em}{3em}
+	\cftsetindents{subsection}{2em}{4em}
+	\cftsetindents{figure}{1em}{3em}
+}{}
+\makeatother
+
+\newcommand{\interstitialpage}{%
+	\cleardoublepageforprintblank
+	\thispagestyle{empty}
+	\null
+	\vfill
+	\begin{center}
+		\Huge \bfseries Supplement \supplementID\\[1em]
+		\LARGE \supplementName
+	\end{center}
+	\vfill
+	\null
+	\cleardoublepageforprintblank
+}
+
+\newcommand{\setpagestyle}{
+	\ifcombinedsupplements
+		\thispagestyle{supplementary-combined}
+		\pagestyle{supplementary-combined}
+	\else
+		\thispagestyle{supplementary}
+		\pagestyle{supplementary}
+	\fi
+}
+
+% Include a supplement, passing a number, name and DOI
+\newcommand{\includesupplement}[3]{%
+	\cleardoublepageforprintblank
+	\renewcommand{\supplementNumber}{#1}
+	\renewcommand{\supplementName}{#2}
+	\renewcommand{\doiThis}{#3}
+	\ifcombinedsupplements
+		\interstitialpage
+	\fi
+	\setcounter{chapter}{\numexpr#1 - 1\relax}
+	\chapter{#2}
+	\label{chap:s#1}
+	\setpagestyle
+	\setcounter{localpage}{1}
+	\edef\tempfilename{content-s#1.tex}
+	\input{\tempfilename}
+}
 
 

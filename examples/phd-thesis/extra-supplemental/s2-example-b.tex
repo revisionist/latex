@@ -1,17 +1,10 @@
-\documentclass[hidelinks,a4paper,11pt,openany]{article}
+\documentclass[hidelinks,a4paper,11pt,openany]{book}
 \usepackage[left=2.6cm,right=2.6cm,top=3cm,bottom=3cm]{geometry}
 
 % Uncomment for label debugging
-%\usepackage{showlabels}
-
-% Set a DOI for this item)
-\def\doiThis{\doiSTwo}
-
-% Set the SUPPLEMENT NUMBER for this item
-\newcommand{\supplementNumber}{1}
-
-% Set the SUPPLEMENT NAME for this item
-\newcommand{\supplementName}{Example Supplement B}
+%\usepackage[inline]{showlabels}
+%\renewcommand{\showlabelfont}{\small\ttfamily\color{gray}}
+%\showlabels{ref}
 
 % Include preamble specific to supplemental material
 \input{_supplemental.preamble}
@@ -19,19 +12,12 @@
 % Load style file for supplements
 \input{supplemental.sty}
 
-% Include preamble content specific to bibliography
-\input{../thesis.preamble.bib}
-
-
-
 \begin{document}
-
-\section*{\supplementName}
-
-% ***** BEGIN CONTENT *****
-
-\input{content-s2.tex}
-
-% ***** END CONTENT *****
-
+	
+	% ***** BEGIN CONTENT *****
+	
+	\includesupplement{2}{Example Supplement B}{\doiSTwo}
+	
+	% ***** END CONTENT *****
+	
 \end{document}
