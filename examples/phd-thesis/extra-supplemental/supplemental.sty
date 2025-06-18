@@ -81,6 +81,7 @@
 		\cleardoublepageforprintblank
 		
 		\pagenumbering{roman}
+		\pagestyle{plain}
 		\tableofcontents
 		\setcounter{tocdepth}{0}
 		\cleardoublepageforprintblank
@@ -93,17 +94,26 @@
 \fancypagestyle{supplementary}{
 
 	\fancyhf{}
-	
+
+	\renewcommand{\headrule}{
+		\hbox to\headwidth{%
+			\color{gray}
+			\rule[3pt]{\headwidth}{\headrulewidth}
+		}
+		%\vskip-1pt
+	}
+
 	\renewcommand{\headrulewidth}{0.4pt} % Line above header
+
 	\fancyhead[L]{
 		\textcolor{gray}{\textit{{\footnotesize \titlemain} {\footnotesize (supplemental material)}}} \\[-2pt]
 		\vspace{4pt}  
 		%\textcolor{gray}{\textit{{\footnotesize \titlemain}}} \\
 		\textcolor{gray}{\textbf{\small \supplementTitle}}
 	}
-	
+
 	\renewcommand{\footrulewidth}{0.4pt} % Line above footer
-	
+
 	\fancyfoot[L]{
 		\scriptsize 
 		\ifdefined\doiThis
@@ -124,28 +134,37 @@
 		\fi
 		\textcolor{gray}{\tiny \supplementDate}%
 	}
-	
+
 	\fancyfoot[R]{
-		\small
-		\textcolor{darkgray}{\textit{Page \thepage~of~\pageref{LastPage}}}
+		\footnotesize
+		\textcolor{gray}{\textit{Page \thepage~of~\pageref*{LastPage}}}
 	}
-	
+
 }
 
 
 % Page style for COMBINED supplements (s-combined.tex)
 \fancypagestyle{supplementary-combined}{
-	
+
 	\fancyhf{}
-	
+
+	\renewcommand{\headrule}{
+		\hbox to\headwidth{%
+			\color{gray}
+			\rule[3pt]{\headwidth}{\headrulewidth}
+		}
+		%\vskip-1pt
+	}
+
 	\renewcommand{\headrulewidth}{0.4pt} % Line above header
+
 	\fancyhead[L]{
 		\textcolor{gray}{\textit{{\footnotesize \titlemain} {\footnotesize (supplemental material)}}} \\
 		\textcolor{gray}{\textbf{\small \supplementTitle}}
 	}
-	
+
 	\renewcommand{\footrulewidth}{0.4pt} % Line above footer
-	
+
 	\fancyfoot[L]{
 		\scriptsize 
 		\ifdefined\doiThis
@@ -166,15 +185,15 @@
 		\fi
 		%\textcolor{gray}{\tiny \today}%
 	}
-	
+
 	\fancyfoot[R]{
 		\footnotesize
-		\textcolor{darkgray}{\textit{Page \thepage\ {\scriptsize(\supplementID\ p.\arabic{localpage})}}}
+		\textcolor{gray}{\textit{Page \thepage\ {\scriptsize(\supplementID\ p.\arabic{localpage})}}}
 	}
-	
+
 }
 
-\setlength{\topskip}{32pt}
+\setlength{\topskip}{35pt}
 
 \pagestyle{supplementary}
 
